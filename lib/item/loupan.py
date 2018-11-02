@@ -11,16 +11,32 @@ if not PYTHON_3:   # 如果小于Python3
 
 
 class LouPan(object):
-    def __init__(self, xiaoqu, price, total):
+    def __init__(self,xingzhengqu,region,street,loupan, price,area,total,restype,salestatus,tag,url):
         # self.district = district
         # self.area = area
-        self.xiaoqu = xiaoqu
+        self.xingzhengqu = xingzhengqu
+        self.region = region
+        self.street = street
+        self.loupan = loupan
         # self.address = address
         # self.size = size
         self.price = price
+        self.area = area
         self.total = total
+        self.restype = restype
+        self.salestatus = salestatus
+        self.tag = tag
+        self.url = url
 
     def text(self):
-        return self.xiaoqu + "," + \
+        return self.xingzhengqu + "," + \
+                self.region + "," + \
+                self.street + "," + \
+                self.loupan + "," + \
                 self.price + "," + \
-                self.total
+                self.area + "," + \
+                self.total + "," + \
+                self.restype + "," + \
+                self.salestatus + "," + \
+                self.tag + "," + \
+                self.url

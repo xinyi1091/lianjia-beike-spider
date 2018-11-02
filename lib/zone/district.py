@@ -30,7 +30,8 @@ def get_districts(city):
     :param city: 城市
     :return: 英文区县名列表
     """
-    url = 'https://{0}.{1}.com/xiaoqu/'.format(city, SPIDER_NAME)
+    # url = 'https://{0}.{1}.com/xiaoqu/'.format(city, SPIDER_NAME)
+    url = 'https://{0}.{1}.com/ershoufang/'.format(city, SPIDER_NAME)
     headers = create_headers()
     response = requests.get(url, timeout=10, headers=headers)
     html = response.content
