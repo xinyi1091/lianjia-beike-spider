@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 # author: zengyuetian
+# 此代码仅供学习与交流，请勿用于商业用途。
+# 爬取小区数据的爬虫派生类
 
 import re
 import threadpool
@@ -12,6 +14,7 @@ from lib.utility.date import *
 from lib.utility.path import *
 from lib.zone.area import *
 from lib.utility.log import *
+import lib.utility.version
 
 
 class XiaoQuBaseSpider(BaseSpider):
@@ -70,6 +73,7 @@ class XiaoQuBaseSpider(BaseSpider):
             headers = create_headers()
             page = 'http://{0}.{1}.com/xiaoqu/{2}/pg{3}'.format(city, SPIDER_NAME, area, i)
             print(page)  # 打印版块页面地址
+            BaseSpider.random_delay()
             response = requests.get(page, timeout=10, headers=headers)
             html = response.content
             soup = BeautifulSoup(html, "lxml")
@@ -90,8 +94,6 @@ class XiaoQuBaseSpider(BaseSpider):
                 xiaoqu = XiaoQu(chinese_district, chinese_area, name, price, on_sale)
                 xiaoqu_list.append(xiaoqu)
         return xiaoqu_list
-
-
 
     def start(self):
         city = get_city()

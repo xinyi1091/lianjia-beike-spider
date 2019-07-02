@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 # author: zengyuetian
+# 此代码仅供学习与交流，请勿用于商业用途。
 # 二手房信息的数据结构
-
-import sys
-from lib.utility.version import PYTHON_3
-if not PYTHON_3:   # 如果小于Python3
-    reload(sys)
-    sys.setdefaultencoding("utf-8")
 
 
 class ZuFang(object):

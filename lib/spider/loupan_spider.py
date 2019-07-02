@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 # author: zengyuetian
+# 此代码仅供学习与交流，请勿用于商业用途。
+# 爬取楼盘数据的爬虫派生类
 
 import re
 import math
@@ -13,6 +15,7 @@ from lib.utility.date import *
 from lib.utility.path import *
 from lib.zone.city import get_city
 from lib.utility.log import *
+import lib.utility.version
 
 
 class LouPanBaseSpider(BaseSpider):
@@ -23,9 +26,9 @@ class LouPanBaseSpider(BaseSpider):
         :param fmt: 保存文件格式
         :return: None
         """
-        # csv_file = self.today_path + "/{0}.csv".format(city_name)
-        csv_file = self.today_path + "/{0}_{1}.csv".format(city_name,self.date_string)
-        with open(csv_file, "w", encoding='utf-8') as f:
+
+        csv_file = self.today_path + "/{0}.csv".format(city_name)
+        with open(csv_file, "w") as f:
             # 开始获得需要的板块数据
             loupans = self.get_loupan_info(city_name)
             self.total_num = len(loupans)
@@ -66,6 +69,7 @@ class LouPanBaseSpider(BaseSpider):
         for i in range(1, total_page + 1):
             page = 'http://{0}.fang.{1}.com/loupan/pg{2}'.format(city_name, SPIDER_NAME, i)
             print(page)
+            BaseSpider.random_delay()
             response = requests.get(page, timeout=10, headers=headers)
             html = response.content
             soup = BeautifulSoup(html, "lxml")

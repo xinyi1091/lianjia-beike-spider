@@ -1,5 +1,6 @@
 # 链家网(lianjia.com)和贝壳网(ke.com)爬虫
-- 爬取链家网、贝壳网的各类房价数据（小区数据，挂牌二手房, 出租房，新房）。如果好用，请star ！
+- 爬取链家网、贝壳网的各类房价数据（小区数据，挂牌二手房, 出租房，新房）。
+- **如果好用，请点星支持 ！**
 - 支持北京上海广州深圳等国内21个主要城市；支持Python2和Python3; 基于页面的数据爬取，稳定可靠; 丰富的代码注释，帮助理解代码并且方便扩展功能。
 - 数据含义：城市-city, 区县-district, 板块-area, 小区-xiaoqu, 二手房-ershou, 租房-zufang， 新房-loupan。
 - 每个版块存储为一个csv文件，该文件可以作为原始数据进行进一步的处理和分析。
@@ -7,7 +8,7 @@
 ![alt text](https://github.com/jumper2014/lianjia-spider/blob/master/pic/xiaoqu_top.png)
 ![alt text](https://github.com/jumper2014/lianjia-spider/blob/master/pic/district_top.png)
 - 如果链家和贝壳页面结构有调整，欢迎反馈，我将尽力保持更新。
-- 此代码仅供学习与交流，请勿用于商业用途。问题反馈QQ群号635276285。
+- 此代码仅供学习与交流，请勿用于商业用途，后果自负。
 
 ## 安装依赖
 - pip install -r requirements.txt
@@ -15,6 +16,11 @@
 - 运行前，请指定要爬取的网站，见lib/spider/base_spider.py里面的SPIDER_NAME变量。
 - 清理数据，运行 python tool/clean.py
 
+## 快速问答
+- Q: 如何降低爬取速度，避免被封IP？A:见base_spider.py里面的RANDOM_DELAY
+- Q: 如何减少并发的爬虫数？ A: 见见base_spider.py的thread_pool_size
+- Q: 为何无法使用xiaoqu_to_chart.py? A: 该脚本现仅支持mac系统
+- Q: 有其他问题反馈途径么？ A: 问题反馈QQ群号635276285。
 
 ## 小区房价数据爬取
 - 内容格式：采集日期,所属区县,板块名,小区名,挂牌均价,挂牌数
@@ -90,6 +96,8 @@ Total cost 29.757128953933716 second
 
 
 ### 更新记录
+- 2019/06/21 去除requirements.txt中的webbrower
+- 2018/11/05 增加工具下载二手房缩略图tool/download_ershou_image.py
 - 2018/11/01 增加二手房缩略图地址
 - 2018/10/28 xiaoqu_to_db.py改造成支持命令行参数自动运行。
 - 2018/10/25 将主要爬取代码抽取到spider类中。

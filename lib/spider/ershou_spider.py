@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 # author: zengyuetian
+# 此代码仅供学习与交流，请勿用于商业用途。
+# 爬取二手房数据的爬虫派生类
 
 import re
 import threadpool
@@ -12,6 +14,7 @@ from lib.utility.date import *
 from lib.utility.path import *
 from lib.zone.area import *
 from lib.utility.log import *
+import lib.utility.version
 
 
 class ErShouSpider(BaseSpider):
@@ -78,6 +81,7 @@ class ErShouSpider(BaseSpider):
             page = 'http://{0}.{1}.com/ershoufang/{2}/pg{3}'.format(city_name, SPIDER_NAME, area_name, num)
             print(page)  # 打印每一页的地址
             headers = create_headers()
+            BaseSpider.random_delay()
             response = requests.get(page, timeout=10, headers=headers)
             html = response.content
             soup = BeautifulSoup(html, "lxml")
